@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+    image: afrokirill/exam_end
+    ports:
+      - 80:80
+    volumes:
+      - ./configs/docker_config.py:/code/configs/config.py
+    depends_on:
+      pg:
+        condition: service_healthy
+
+  pg:
+    image:
+      postgres:latest
+    environment:
+      POSTGRES_USER: flask_app
+      POSTGRES_PASSWORD: flask_pass
+      POSTGRES_DB: flask_app
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
