@@ -19,7 +19,7 @@
 
 ---
 
-1) Copy this project on your local machine `git clone `
+1) Copy this project on your local machine `git clone https://github.com/KapHullloK/exam_end.git`
 2) Write in a terminal this command `docker-compose up --build -d`
 3) Open an application, which can send **GET/POST/PUT/DELETE** methods, f.e `Postman` and write in the browse page this
    address `http://localhost/`
